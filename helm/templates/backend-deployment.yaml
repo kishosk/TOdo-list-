@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ include "todo.backend.name" . }}
+
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ include "todo.backend.name" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "todo.backend.name" . }}
+        version: v1
+
+    spec:
+      containers:
+      - name: {{ include "todo.backend.name" . }}
+
+        image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: {{ .Values.backend.service.port }}
+
+        envFrom:
+        - configMapRef:
+            name: todo-config

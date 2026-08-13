@@ -1,0 +1,20 @@
+apiVersion: v2
+name: todo-app
+description: A Helm chart for the Todo app
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This documentation is at https://helm.sh/docs/topics/charts/
+version: 0.1.0
+
+# This is the version number of the application being deployed. This is not used by Helm
+# but is commonly used by tools like CI/CD pipelines and GitOps.
+appVersion: 1.0.0

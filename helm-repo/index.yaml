@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  todo-app:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-07-27T11:55:34.7896183+05:30"
+    description: A Helm chart for the Todo app
+    digest: 1c92affe6bfa2d2229794267d95d7bc9f33fddf834155f1fb656fed18ddf6cc3
+    name: todo-app
+    type: application
+    urls:
+    - todo-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-07-27T11:55:34.7649382+05:30"

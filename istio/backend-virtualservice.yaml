@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+
+metadata:
+  name: backend-virtualservice
+
+spec:
+  hosts:
+    - backend-service
+
+  http:
+    - route:
+        - destination:
+            host: backend-service
+            subset: v1
+            port:
+              number: 3001
+          weight: 90
+
+        - destination:
+            host: backend-service
+            subset: v2
+            port:
+              number: 3001
+          weight: 10

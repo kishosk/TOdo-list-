@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: todo-backend-mtls
+  namespace: default
+spec:
+  host: todo-backend
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

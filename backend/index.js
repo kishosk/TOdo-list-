@@ -7,7 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/ToDo')
+mongoose.connect(
+  process.env.MONGO_URI || "mongodb://127.0.0.1:27017/ToDo"
+)
+.then(() => console.log("✅ MongoDB Connected"))
+.catch((err) => console.error("❌ MongoDB Connection Error:", err));
+//mongoose.connect('mongodb://127.0.0.1:27017/ToDo')
 
 app.get('/get', (req,res) =>{
     TodoModel.find()

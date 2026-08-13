@@ -1,0 +1,38 @@
+frontend:
+  replicaCount: 1
+
+  image:
+    repository: todo-frontend
+    tag: latest
+
+  service:
+    type: NodePort
+    port: 5173
+    nodePort: 30080
+
+backend:
+  replicaCount: 1
+
+  image:
+    repository: todo-backend
+    tag: latest
+
+  service:
+    type: ClusterIP
+    port: 3001
+
+mongodb:
+  replicaCount: 1
+
+  image:
+    repository: mongo
+    tag: latest
+
+  service:
+    port: 27017
+
+persistence:
+  storage: 1Gi
+
+config:
+  mongoUri: mongodb://mongodb:27017/ToDo

@@ -1,0 +1,35 @@
+# VCS
+.git/
+.gitignore
+
+# IDE files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Helm package
+*.tgz
+
+# Backup files
+*.bak
+*.tmp
+*.swp
+*.orig
+
+# Logs
+*.log
+
+# Node modules (if any)
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Markdown documentation
+README.md

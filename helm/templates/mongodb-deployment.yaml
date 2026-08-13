@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ include "todo.mongodb.name" . }}
+
+spec:
+  replicas: {{ .Values.mongodb.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ include "todo.mongodb.name" . }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ include "todo.mongodb.name" . }}
+
+    spec:
+      containers:
+      - name: {{ include "todo.mongodb.name" . }}
+
+        image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
+
+        ports:
+        - containerPort: {{ .Values.mongodb.service.port }}
+
+        volumeMounts:
+        - name: mongo-storage
+          mountPath: /data/db
+
+      volumes:
+      - name: mongo-storage
+
+        persistentVolumeClaim:
+          claimName: mongo-pvc
