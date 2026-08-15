@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   docker:
     name: Build and Push Docker Images
@@ -50,8 +53,27 @@ jobs:
       - name: Setup Helm
         uses: azure/setup-helm@v4
 
+      - name: Update image tags
+        run: |
+          sed -i '/frontend:/,/service:/ s/tag: .*/tag: ${{ github.sha }}/' helm/values.yaml
+          sed -i '/backend:/,/service:/ s/tag: .*/tag: ${{ github.sha }}/' helm/values.yaml
+
       - name: Helm lint
         run: helm lint ./helm
 
       - name: Helm template
         run: helm template todo-app ./helm
+
+      - name: Commit updated image tags
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add helm/values.yaml
+
+          if git diff --cached --quiet; then
+            echo "No image tag changes to commit"
+          else
+            git commit -m "Update Helm images to ${{ github.sha }} [skip ci]"
+            git push
+          fi
