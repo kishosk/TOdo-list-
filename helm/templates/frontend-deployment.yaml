@@ -18,12 +18,13 @@ spec:
 
     spec:
       serviceAccountName: todo-frontend
+
       containers:
       - name: {{ include "todo.frontend.name" . }}
 
         image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
 
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
 
         ports:
         - containerPort: {{ .Values.frontend.service.port }}

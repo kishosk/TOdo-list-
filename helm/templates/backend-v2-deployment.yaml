@@ -22,7 +22,7 @@ spec:
       containers:
         - name: todo-backend
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
 
           ports:
             - containerPort: {{ .Values.backend.service.port }}
