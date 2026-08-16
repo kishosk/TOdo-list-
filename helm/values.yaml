@@ -3,7 +3,7 @@ frontend:
 
   image:
     repository: kisho57/todo-frontend
-    tag: 81818f2b00613629909cb3c30a14af184c459de8
+    tag: 5e1586b99e4e910f0ae79fe78aca0173bdcf076d
 
   service:
     type: NodePort
@@ -15,7 +15,7 @@ backend:
 
   image:
     repository: kisho57/todo-backend
-    tag: 81818f2b00613629909cb3c30a14af184c459de8
+    tag: 5e1586b99e4e910f0ae79fe78aca0173bdcf076d
 
   service:
     type: ClusterIP
